@@ -1,6 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #fafaff;
 }
 
 a {
@@ -10,9 +11,12 @@ a {
 .grid-parent {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 2rem;
+  gap: 1rem;
 }
 
-.grid-child {
-
+.card {
+  border-radius: 1em;
+  box-shadow: 1px 1px 3px rgba(0 0 0 / 0.1);
+  padding: 2em;
+  background-color: #fff;
 }

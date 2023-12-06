@@ -22,8 +22,10 @@
     <a href='/product/list'>Browse All</a>
     <div class='grid-parent'>
       <% for (const product of featured_products) { %>
-        <div class='grid-child'>
-          <h3><%= product.name %></h3>
+        <div class='grid-child card'>
+          <h3>
+            <a href="<%= product.url %>"><%= product.name %></a>
+          </h3>
           <p>&pound;<%= product.price %> | <%= product.weight %>lbs.</p>
           <p><%= product.description %></p>
         </div>
@@ -33,8 +35,10 @@
     <h2>Featured Brands</h2>
     <div class='grid-parent'>
       <% for (const brand of featured_brands) { %>
-        <div class='grid-child'>
-          <h3><%= brand.name %></h3>
+        <div class='grid-child card'>
+          <h3>
+            <a href="<%= brand.url %>"><%= brand.name %></a>
+          </h3>
           <p><%= brand.description %></p>
           <p><%= brand.address %></p>
         </div>
