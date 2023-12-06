@@ -5,8 +5,11 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const dotenv = require('dotenv').config();
 
+// Import subroutes
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const productRoute = require('./routes/product');
+const brandRoute = require('./routes/brand');
+const categoryRoute = require('./routes/category');
 
 const app = express();
 
@@ -30,8 +33,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Assign subroutes
+app.use('/product', productRoute);
+app.use('/brand', brandRoute);
+app.use('/category', categoryRoute);
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
