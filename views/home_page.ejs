@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <nav>
+      <ul>
+        <% for (const category of all_categories) { %>
+          <li>
+            <a href='<%= category.url %>'><%= category.name %></a>
+          </li>
+        <% } %>
+      </ul>
+    </nav>
+
+    <h2>Featured Products</h2>
+    <a href='/product/list'>Browse All</a>
+    <div class='grid-parent'>
+      <% for (const product of featured_products) { %>
+        <div class='grid-child'>
+          <h3><%= product.name %></h3>
+          <p>&pound;<%= product.price %> | <%= product.weight %>lbs.</p>
+          <p><%= product.description %></p>
+        </div>
+        <% } %>
+      </div>
+      
+    <h2>Featured Brands</h2>
+    <div class='grid-parent'>
+      <% for (const brand of featured_brands) { %>
+        <div class='grid-child'>
+          <h3><%= brand.name %></h3>
+          <p><%= brand.description %></p>
+          <p><%= brand.address %></p>
+        </div>
+      <% } %>
+    </div>
+  </body>
+</html>
