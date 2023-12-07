@@ -15,8 +15,14 @@
           <h3>
             <a href="<%= product.url %>"><%= product.name %></a>
           </h3>
-          <p><%= product.brand.name %></p>
-          <p>&pound;<%= product.price %> | <%= product.weight %>lbs.</p>
+
+          <% if (product.available) { %>
+            <p><%= product.brand.name %></p>
+            <p>&pound;<%= product.price %> | <%= product.weight %>lbs.</p>
+            <p>In stock: <%= product.number_in_stock %></p>
+          <% } else { %>
+              <p>Currently out of stock</p>
+          <% } %>
         </div>
         <% } %>
       </div>
