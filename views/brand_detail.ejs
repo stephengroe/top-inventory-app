@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <h2><%= brand.name %></h2>
+    <p><%= brand.description %></p>
+    <p><%= brand.address %></p>
+
+    <h2>Brand Products</h2>
+    <div class='grid-parent'>
+      <% for (const product of brand_products) { %>
+        <div class='grid-child card'>
+          <h3>
+            <a href="<%= product.url %>"><%= product.name %></a>
+          </h3>
+          <p><%= product.brand.name %></p>
+          <p>&pound;<%= product.price %> | <%= product.weight %>lbs.</p>
+        </div>
+        <% } %>
+      </div>
+  </body>
+</html>

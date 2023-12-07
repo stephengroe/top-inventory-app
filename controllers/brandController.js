@@ -1,4 +1,5 @@
 const Brand = require('../models/brand');
+const Product = require('../models/product');
 const asyncHandler = require('express-async-handler');
 
 exports.brand_list = asyncHandler(async (req, res, next) => {
@@ -6,7 +7,15 @@ exports.brand_list = asyncHandler(async (req, res, next) => {
 });
 
 exports.brand_detail = asyncHandler(async (req, res, next) => {
-  res.send("Not implemented: Brand detail");
+  const [brand, brandProducts] = await Promise.all([
+    Brand.findById(req.params.id).exec(),
+    Product.find({ brand: req.params.id }).exec(),
+  ]);
+  res.render('brand_detail', {
+    title: brand.name,
+    brand: brand,
+    brand_products: brandProducts,
+  });
 });
 
 exports.brand_create_get = asyncHandler(async (req, res, next) => {
