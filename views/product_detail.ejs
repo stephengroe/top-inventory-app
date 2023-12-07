@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <h2><%= product.name %></h2>
+    <h3>
+      <a href='<%= product.brand.url %>'><%= product.brand.name %></a>
+    </h3>
+    <p>&pound;<%= product.price %> | <%= product.weight %>lbs.</p>
+    <p><%= product.description %></p>
+  </body>
+</html>
