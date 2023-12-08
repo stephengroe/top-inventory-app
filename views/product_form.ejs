@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+
+    <form method='POST' action=''>
+      <label>
+        Name:
+        <input
+          type="text"
+          required='true'
+          placeholder="Product name"
+          name="name"
+          value="<%= product ? product.name : '' %>"
+        >
+      </label>
+      <label>
+        Description:
+        <textarea
+          rows="3"
+          cols="50"
+          required='false'
+          placeholder="Product description"
+          name="description"    
+        >
+        <%= product ? product.description : '' %>
+      </textarea>
+      </label>
+      <label>
+        Price:
+        <input
+          type="number"
+          min="0"
+          required='true'
+          placeholder="Product price"
+          name="price"
+          value="<%= product ? product.price : '' %>"
+        >
+      </label>
+      <label>
+        Weight:
+        <input
+          type="number"
+          min="0"
+          required='true'
+          placeholder="Product weight"
+          name="weight"
+          value="<%= product ? product.weight : '' %>"
+        >
+      </label>
+      <label>
+        Brand:
+        <select>
+          <% for (const brand of all_brands) { %>
+            <option
+              <% if (brand.name.toString() === product.brand.name.toString()) { %>
+                selected
+              <% } %>
+            ><%= brand.name %></option>
+          <% } %>
+        </select>
+      </label>
+      <label>
+        Category:
+        <select>
+          <% for (const category of all_categories) { %>
+            <option
+              <% if (category.name.toString() === product.category.name.toString()) { %>
+                selected
+              <% } %>
+            ><%= category.name %></option>
+          <% } %>
+        </select>
+      </label>
+      <label>
+        Number in Stock:
+        <input
+          type="number"
+          min="0"
+          required='true'
+          placeholder="Number in stock"
+          name="number_in_stock"
+          value="<%= product ? product.number_in_stock : '' %>"
+        >
+      </label>
+      <button type="submit">Save</button>
+    </form>
+  </body>
+</html>

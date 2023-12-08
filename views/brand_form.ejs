@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+
+    <form method='POST' action=''>
+      <label>
+        Name:
+        <input
+          type="text"
+          required='true'
+          placeholder="Brand name"
+          name="name"
+          value="<%= brand ? brand.name : '' %>"
+        >
+      </label>
+      <label>
+        Description:
+        <input
+          type="text"
+          required='true'
+          placeholder="Brand description"
+          name="description"
+          value="<%= brand ? brand.description : '' %>"
+        >
+      </label>
+      <label>
+        Address:
+        <input
+          type="text"
+          required='true'
+          placeholder="Brand address"
+          name="address"
+          value="<%= brand ? brand.address : '' %>"
+        >
+      </label>
+      <button type="submit">Save</button>
+    </form>
+
+  </body>
+</html>

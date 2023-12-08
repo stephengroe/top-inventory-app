@@ -23,7 +23,10 @@ exports.brand_detail = asyncHandler(async (req, res, next) => {
 });
 
 exports.brand_create_get = asyncHandler(async (req, res, next) => {
-  res.send("Not implemented: Brand create GET");
+  res.render('brand_form', {
+    title: 'Create Brand',
+    brand: null, // Prevent reference errors
+  });
 });
 
 exports.brand_create_post = asyncHandler(async (req, res, next) => {
@@ -39,7 +42,11 @@ exports.brand_delete_post = asyncHandler(async (req, res, next) => {
 });
 
 exports.brand_update_get = asyncHandler(async (req, res, next) => {
-  res.send("Not implemented: Brand update GET");
+  const brand = await Brand.findById(req.params.id).exec();
+  res.render('brand_form', {
+    title: 'Update Brand',
+    brand: brand,
+  });
 });
 
 exports.brand_update_post = asyncHandler(async (req, res, next) => {
