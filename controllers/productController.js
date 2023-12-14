@@ -90,11 +90,22 @@ exports.product_create_post = [
 ];
 
 exports.product_delete_get = asyncHandler(async (req, res, next) => {
-  res.send("Not implemented: Product delete GET");
+  const product = await Product.findById(req.params.id).populate('category brand').exec();
+
+  if (product === null) {
+    // no results!
+    res.redirect('/product/list');
+  } else {
+    res.render('product_delete', {
+      title: 'Delete Product',
+      product: product,
+    });
+  }
 });
 
 exports.product_delete_post = asyncHandler(async (req, res, next) => {
-  res.send("Not implemented: Product delete POST");
+  await Product.findByIdAndDelete(req.body.productid).exec();
+  res.redirect('/product/list');
 });
 
 exports.product_update_get = asyncHandler(async (req, res, next) => {
