@@ -1,6 +1,7 @@
 const Category = require('../models/category');
 const Product = require('../models/product');
 const asyncHandler = require('express-async-handler');
+const { body, validationResult } = require('express-validator');
 
 exports.category_list = asyncHandler(async (req, res, next) => {
   const all_categories = await Category.find().exec();
@@ -29,9 +30,33 @@ exports.category_create_get = asyncHandler(async (req, res, next) => {
   });
 });
 
-exports.category_create_post = asyncHandler(async (req, res, next) => {
-  res.send("Not implemented: Category create POST");
-});
+exports.category_create_post = [
+  body('name', 'Please include a category name!')
+    .trim()
+    .isLength({ min: 1 })
+    .escape(),
+  body('description', 'Please include a category description!')
+    .trim()
+    .escape(),
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+    const category = new Category({
+      name: req.body.name,
+      description: req.body.description,
+    });
+
+    if (errors.isEmpty) {
+      await category.save();
+      res.redirect(category.url);
+    } else {
+      res.render('category_form', {
+        title: 'Create Category',
+        category: category,
+        errors: errors.array(),
+      });
+    }
+  }),
+];
 
 exports.category_delete_get = asyncHandler(async (req, res, next) => {
   res.send("Not implemented: Category delete GET");
@@ -49,6 +74,31 @@ exports.category_update_get = asyncHandler(async (req, res, next) => {
   });
 });
 
-exports.category_update_post = asyncHandler(async (req, res, next) => {
-  res.send("Not implemented: Category update POST");
-});
+exports.category_update_post = [
+  body('name', 'Please include a category name!')
+    .trim()
+    .isLength({ min: 1 })
+    .escape(),
+  body('description', 'Please include a category description!')
+    .trim()
+    .escape(),
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+    const category = new Category({
+      name: req.body.name,
+      description: req.body.description,
+      _id: req.params.id,
+    });
+    
+    if (errors.isEmpty) {
+      const updatedCategory = await Category.findByIdAndUpdate(req.params.id, category);
+      res.redirect(updatedCategory.url);
+    } else {
+      res.render('category_form', {
+        title: 'Update Category',
+        category: category,
+        errors: errors.array(),
+      });
+    }
+  }),
+];

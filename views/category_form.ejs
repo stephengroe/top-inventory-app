@@ -15,17 +15,17 @@
           required='true'
           placeholder="Category name"
           name="name"
-          value="<%= category ? category.name : '' %>"
+          value="<%= locals.category ? category.name : '' %>"
         >
       </label>
       <label>
         Description:
         <input
           type="text"
-          required='true'
+          required='false'
           placeholder="Category description"
           name="description"
-          value="<%= category ? category.description : '' %>"
+          value="<%= locals.category ? category.description : '' %>"
         >
       </label>
       <button type="submit">Save</button>
