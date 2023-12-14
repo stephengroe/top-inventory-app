@@ -67,7 +67,7 @@ exports.product_create_post = [
       brand: req.body.brand,
     });
 
-    if (errors.isEmpty()) {
+    if (errors.isEmpty) {
       await product.save();
       res.redirect(product.url);
     } else {
@@ -147,7 +147,7 @@ exports.product_update_post = [
       _id: req.params.id,
     });
 
-    if (errors.isEmpty()) {
+    if (errors.isEmpty) {
       const updatedProduct = await Product.findByIdAndUpdate(req.params.id, product);
       res.redirect(updatedProduct.url);
     } else {
