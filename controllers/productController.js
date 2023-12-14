@@ -5,7 +5,7 @@ const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
 
 exports.product_list = asyncHandler(async (req, res, next) => {
-  const allProducts = await Product.find().populate('category brand').exec();
+  const allProducts = await Product.find().sort({ name: 1 }).populate('category brand').exec();
   res.render('product_list', {
     title: 'Product List',
     all_products: allProducts,
