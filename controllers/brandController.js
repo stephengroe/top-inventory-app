@@ -1,6 +1,7 @@
 const Brand = require('../models/brand');
 const Product = require('../models/product');
 const asyncHandler = require('express-async-handler');
+const { body, validationResult } = require('express-validator');
 
 exports.brand_list = asyncHandler(async (req, res, next) => {
   const allBrands = await Brand.find().exec();
@@ -28,9 +29,39 @@ exports.brand_create_get = asyncHandler(async (req, res, next) => {
   });
 });
 
-exports.brand_create_post = asyncHandler(async (req, res, next) => {
-  res.send("Not implemented: Brand create POST");
-});
+exports.brand_create_post = [
+  body('name', 'Please include a brand name!')
+    .trim()
+    .isLength({ min: 1 })
+    .escape(),
+  body('description', 'Please include a valid description!')
+    .trim()
+    .escape(),
+  body('address', 'Please include a valid address!')
+    .trim()
+    .escape(),
+
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+    const brand = new Brand({
+      name: req.body.name,
+      description: req.body.description,
+      address: req.body.address,
+    });
+    
+    if (errors.isEmpty()) {
+      await brand.save();
+      res.redirect(brand.url);
+    } else {
+      // Regenerate page
+      res.render('brand_form', {
+        title: 'Create Brand',
+        brand: brand,
+        errors: errors.array(),
+      });
+    }
+  }),
+];
 
 exports.brand_delete_get = asyncHandler(async (req, res, next) => {
   res.send("Not implemented: Brand delete GET");
@@ -48,6 +79,36 @@ exports.brand_update_get = asyncHandler(async (req, res, next) => {
   });
 });
 
-exports.brand_update_post = asyncHandler(async (req, res, next) => {
-  res.send("Not implemented: Brand update POST");
-});
+exports.brand_update_post = [
+  body('name', 'Please include a brand name!')
+    .trim()
+    .isLength({ min: 1 })
+    .escape(),
+  body('description', 'Please include a valid description!')
+    .trim()
+    .escape(),
+  body('address', 'Please include a valid address!')
+    .trim()
+    .escape(),
+
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+    const brand = new Brand({
+      name: req.body.name,
+      description: req.body.description,
+      address: req.body.address,
+      _id: req.params.id,
+    });
+
+  if (errors.isEmpty()) {
+    const updatedBrand = await Brand.findByIdAndUpdate(req.params.id, brand);
+    res.redirect(updatedBrand.url);
+  } else {
+    res.render('brand_form', {
+      title: 'Update Brand',
+      brand: brand,
+      errors: errors.toArray(),
+    });
+  }
+  }),
+];

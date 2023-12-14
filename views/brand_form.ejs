@@ -15,18 +15,18 @@
           required='true'
           placeholder="Brand name"
           name="name"
-          value="<%= brand ? brand.name : '' %>"
+          value="<%= locals.brand ? brand.name : '' %>"
         >
       </label>
       <label>
         Description:
-        <input
-          type="text"
-          required='true'
+        <textarea
+          rows="3"
+          cols="50"
+          required='false'
           placeholder="Brand description"
           name="description"
-          value="<%= brand ? brand.description : '' %>"
-        >
+        ><%= locals.brand ? brand.description : '' %></textarea>
       </label>
       <label>
         Address:
@@ -35,7 +35,7 @@
           required='true'
           placeholder="Brand address"
           name="address"
-          value="<%= brand ? brand.address : '' %>"
+          value="<%= locals.brand ? brand.address : '' %>"
         >
       </label>
       <button type="submit">Save</button>
