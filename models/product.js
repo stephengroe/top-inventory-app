@@ -6,9 +6,9 @@ const ProductSchema = new Schema({
   description: { type: String },
   category: { type: Schema.Types.ObjectId, ref: 'Category', required: true },
   brand: { type: Schema.Types.ObjectId, ref: 'Brand', required: true},
-  number_in_stock: { type: Number, required: true },
+  number_in_stock: { type: Number, required: true, min: 0 },
   price: { type: Number, required: true, min: 0 },
-  weight: { type: Number },
+  weight: { type: Number, required: true, min: 0 },
 });
 
 // Virtual property for product URL

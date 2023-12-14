@@ -7,6 +7,14 @@
   <body>
     <h1><%= title %></h1>
 
+    <% if (locals.errors) { %>
+      <ul class="errors">
+        <% for (const error in errors) { %>
+          <li>error.msg</li>
+        <% } %>
+      </ul>
+    <% } %>
+
     <form method='POST' action=''>
       <label>
         Name:
@@ -15,7 +23,7 @@
           required='true'
           placeholder="Product name"
           name="name"
-          value="<%= product ? product.name : '' %>"
+          value="<%= locals.product ? product.name : '' %>"
         >
       </label>
       <label>
@@ -27,7 +35,7 @@
           placeholder="Product description"
           name="description"    
         >
-        <%= product ? product.description : '' %>
+        <%= locals.product ? product.description : '' %>
       </textarea>
       </label>
       <label>
@@ -35,29 +43,36 @@
         <input
           type="number"
           min="0"
+          step="0.01"
           required='true'
           placeholder="Product price"
           name="price"
-          value="<%= product ? product.price : '' %>"
-        >
-      </label>
-      <label>
-        Weight:
-        <input
+          value="<%= locals.product ? product.price : '' %>"
+          >
+        </label>
+        <label>
+          Weight:
+          <input
           type="number"
           min="0"
+          step="0.01"
           required='true'
           placeholder="Product weight"
           name="weight"
-          value="<%= product ? product.weight : '' %>"
+          value="<%= locals.product ? product.weight : '' %>"
         >
       </label>
       <label>
         Brand:
-        <select>
+        <select
+          name="brand"
+          required="true"
+          placeholder="Choose a brand"
+        >
           <% for (const brand of all_brands) { %>
             <option
-              <% if (brand.name.toString() === product.brand.name.toString()) { %>
+              value="<%= brand._id%>"
+              <% if (locals.product && brand.name.toString() === product.brand.name.toString()) { %>
                 selected
               <% } %>
             ><%= brand.name %></option>
@@ -66,10 +81,15 @@
       </label>
       <label>
         Category:
-        <select>
+        <select
+          name="category"
+          required="true"
+          placeholder="Choose a category"
+        >
           <% for (const category of all_categories) { %>
             <option
-              <% if (category.name.toString() === product.category.name.toString()) { %>
+              value="<%= category._id%>"
+              <% if (locals.product && category.name.toString() === product.category.name.toString()) { %>
                 selected
               <% } %>
             ><%= category.name %></option>
@@ -84,7 +104,7 @@
           required='true'
           placeholder="Number in stock"
           name="number_in_stock"
-          value="<%= product ? product.number_in_stock : '' %>"
+          value="<%= locals.product ? product.number_in_stock : '' %>"
         >
       </label>
       <button type="submit">Save</button>
