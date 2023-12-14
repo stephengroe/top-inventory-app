@@ -25,7 +25,6 @@ exports.brand_detail = asyncHandler(async (req, res, next) => {
 exports.brand_create_get = asyncHandler(async (req, res, next) => {
   res.render('brand_form', {
     title: 'Create Brand',
-    brand: null, // Prevent reference errors
   });
 });
 

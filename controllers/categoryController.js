@@ -26,7 +26,6 @@ exports.category_detail = asyncHandler(async (req, res, next) => {
 exports.category_create_get = asyncHandler(async (req, res, next) => {
   res.render('category_form', {
     title: 'Create Category',
-    category: null, // Prevent reference errors
   });
 });
 
