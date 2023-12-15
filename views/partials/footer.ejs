@@ -1,10 +1,8 @@
-<div class="footer">
-  <p>Joy of Tea</p>
+<footer>
+  <div class="footer-content">
+    <h2>Joy of Tea</h2>
+    <%- include('./navbar') %>
+  </div>
 
-  <ul>
-    <li><a href="/category/list">All Categories</a></li>
-    <li><a href="/product/list">All Products</a></li>
-    <li><a href="/brand/list">All Brands</a></li>
-  </ul>
-  <p class="copyright">&copy; <%= new Date().getFullYear() %></p>
-</div>
+  <p class="copyright">&copy; 1837-<%= new Date().getFullYear() %> Joy of Tea</p>
+</footer>
