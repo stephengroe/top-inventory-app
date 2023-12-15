@@ -5,31 +5,35 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
+    <%- include('./partials/header')%>
 
-    <form method='POST' action=''>
-      <label>
-        Name:
-        <input
-          type="text"
-          required='true'
-          placeholder="Category name"
-          name="name"
-          value="<%= locals.category ? category.name : '' %>"
-        >
-      </label>
-      <label>
-        Description:
-        <input
-          type="text"
-          required='false'
-          placeholder="Category description"
-          name="description"
-          value="<%= locals.category ? category.description : '' %>"
-        >
-      </label>
-      <button type="submit">Save</button>
-    </form>
+    <main>
+      <h2><%= title %></h2>
+      <form method='POST' action=''>
+        <label>
+          Name:
+          <input
+            type="text"
+            required='true'
+            placeholder="Category name"
+            name="name"
+            value="<%= locals.category ? category.name : '' %>"
+          >
+        </label>
+        <label>
+          Description:
+          <input
+            type="text"
+            required='false'
+            placeholder="Category description"
+            name="description"
+            value="<%= locals.category ? category.description : '' %>"
+          >
+        </label>
+        <button type="submit">Save</button>
+      </form>
+    </main>
 
+    <%- include('./partials/footer') %>
   </body>
 </html>

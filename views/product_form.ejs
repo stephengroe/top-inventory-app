@@ -5,107 +5,113 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
+    <%- include('./partials/header')%>
 
-    <% if (locals.errors) { %>
-      <ul class="errors">
-        <% for (const error in errors) { %>
-          <li>error.msg</li>
-        <% } %>
-      </ul>
-    <% } %>
+    <main>
+      <h2><%= title %></h2>
 
-    <form method='POST' action=''>
-      <label>
-        Name:
-        <input
-          type="text"
-          required='true'
-          placeholder="Product name"
-          name="name"
-          value="<%= locals.product ? product.name : '' %>"
-        >
-      </label>
-      <label>
-        Description:
-        <textarea
-          rows="3"
-          cols="50"
-          required='false'
-          placeholder="Product description"
-          name="description"    
-        ><%= locals.product ? product.description : '' %></textarea>
-      </label>
-      <label>
-        Price:
-        <input
-          type="number"
-          min="0"
-          step="0.01"
-          required='true'
-          placeholder="Product price"
-          name="price"
-          value="<%= locals.product ? product.price : '' %>"
+      <% if (locals.errors) { %>
+        <ul class="errors">
+          <% for (const error in errors) { %>
+            <li>error.msg</li>
+          <% } %>
+        </ul>
+      <% } %>
+  
+      <form method='POST' action=''>
+        <label>
+          Name:
+          <input
+            type="text"
+            required='true'
+            placeholder="Product name"
+            name="name"
+            value="<%= locals.product ? product.name : '' %>"
           >
         </label>
         <label>
-          Weight:
+          Description:
+          <textarea
+            rows="3"
+            cols="50"
+            required='false'
+            placeholder="Product description"
+            name="description"    
+          ><%= locals.product ? product.description : '' %></textarea>
+        </label>
+        <label>
+          Price:
           <input
-          type="number"
-          min="0"
-          step="0.01"
-          required='true'
-          placeholder="Product weight"
-          name="weight"
-          value="<%= locals.product ? product.weight : '' %>"
-        >
-      </label>
-      <label>
-        Brand:
-        <select
-          name="brand"
-          required="true"
-          placeholder="Choose a brand"
-        >
-          <% for (const brand of all_brands) { %>
-            <option
-              value="<%= brand._id%>"
-              <% if (locals.product && brand.name.toString() === product.brand.name.toString()) { %>
-                selected
-              <% } %>
-            ><%= brand.name %></option>
-          <% } %>
-        </select>
-      </label>
-      <label>
-        Category:
-        <select
-          name="category"
-          required="true"
-          placeholder="Choose a category"
-        >
-          <% for (const category of all_categories) { %>
-            <option
-              value="<%= category._id%>"
-              <% if (locals.product && category.name.toString() === product.category.name.toString()) { %>
-                selected
-              <% } %>
-            ><%= category.name %></option>
-          <% } %>
-        </select>
-      </label>
-      <label>
-        Number in Stock:
-        <input
-          type="number"
-          min="0"
-          required='true'
-          placeholder="Number in stock"
-          name="number_in_stock"
-          value="<%= locals.product ? product.number_in_stock : '' %>"
-        >
-      </label>
-      <button type="submit">Save</button>
-    </form>
+            type="number"
+            min="0"
+            step="0.01"
+            required='true'
+            placeholder="Product price"
+            name="price"
+            value="<%= locals.product ? product.price : '' %>"
+            >
+          </label>
+          <label>
+            Weight:
+            <input
+            type="number"
+            min="0"
+            step="0.01"
+            required='true'
+            placeholder="Product weight"
+            name="weight"
+            value="<%= locals.product ? product.weight : '' %>"
+          >
+        </label>
+        <label>
+          Brand:
+          <select
+            name="brand"
+            required="true"
+            placeholder="Choose a brand"
+          >
+            <% for (const brand of all_brands) { %>
+              <option
+                value="<%= brand._id%>"
+                <% if (locals.product && brand.name.toString() === product.brand.name.toString()) { %>
+                  selected
+                <% } %>
+              ><%= brand.name %></option>
+            <% } %>
+          </select>
+        </label>
+        <label>
+          Category:
+          <select
+            name="category"
+            required="true"
+            placeholder="Choose a category"
+          >
+            <% for (const category of all_categories) { %>
+              <option
+                value="<%= category._id%>"
+                <% if (locals.product && category.name.toString() === product.category.name.toString()) { %>
+                  selected
+                <% } %>
+              ><%= category.name %></option>
+            <% } %>
+          </select>
+        </label>
+        <label>
+          Number in Stock:
+          <input
+            type="number"
+            min="0"
+            required='true'
+            placeholder="Number in stock"
+            name="number_in_stock"
+            value="<%= locals.product ? product.number_in_stock : '' %>"
+          >
+        </label>
+        <button type="submit">Save</button>
+      </form>  
+    </main>
+
+    <%- include('./partials/footer') %>
   </body>
 </html>

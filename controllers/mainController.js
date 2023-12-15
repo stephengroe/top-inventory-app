@@ -10,7 +10,7 @@ exports.home_page = asyncHandler(async (req, res, next) => {
     Category.find().exec(),
   ]);
 
-  res.render('home_page', {
+  res.render('index', {
     title: 'Joy of Tea',
     featured_products: featuredProducts,
     featured_brands: featuredBrands,

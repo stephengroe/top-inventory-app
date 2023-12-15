@@ -5,23 +5,26 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    
-    <h2>All Brands</h2>
-    <div class='grid-parent'>
-      <% for (const brand of all_brands) { %>
-        <div class='grid-child card'>
-          <h3>
-            <a href="<%= brand.url %>"><%= brand.name %></a>
-          </h3>
-          <p><%= brand.address %></p>
+    <%- include('./partials/header')%>
+
+    <main>
+      <h2>All Brands</h2>
+      <div class='grid-parent'>
+        <% for (const brand of all_brands) { %>
+          <div class='grid-child card'>
+            <h3>
+              <a href="<%= brand.url %>"><%= brand.name %></a>
+            </h3>
+            <p><%= brand.address %></p>
+          </div>
+          <% } %>
         </div>
-        <% } %>
-      </div>
-      <hr />
-      <p>
-        <a href='/brand/create'>Create Brand</a>
-      </p>  
+        <hr />
+        <p>
+          <a href='/brand/create'>Create Brand</a>
+        </p>    
+    </main>
+
+    <%- include('./partials/footer') %>
   </body>
 </html>

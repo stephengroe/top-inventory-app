@@ -1,13 +1,6 @@
 <nav>
   <ul>
     <li><a href="/category/list">All Categories</a></li>
-      <ul>
-        <% for (const category of categories) { %>
-          <li>
-            <a href='<%= category.url %>'><%= category.name %></a>
-          </li>
-        <% } %>
-      </ul>
     <li><a href="/product/list">All Products</a></li>
     <li><a href="/brand/list">All Brands</a></li>
   </ul>

@@ -5,41 +5,46 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
+    <%- include('./partials/header') %>
 
-    <form method='POST' action=''>
-      <label>
-        Name:
-        <input
-          type="text"
-          required='true'
-          placeholder="Brand name"
-          name="name"
-          value="<%= locals.brand ? brand.name : '' %>"
-        >
-      </label>
-      <label>
-        Description:
-        <textarea
-          rows="3"
-          cols="50"
-          required='false'
-          placeholder="Brand description"
-          name="description"
-        ><%= locals.brand ? brand.description : '' %></textarea>
-      </label>
-      <label>
-        Address:
-        <input
-          type="text"
-          required='true'
-          placeholder="Brand address"
-          name="address"
-          value="<%= locals.brand ? brand.address : '' %>"
-        >
-      </label>
-      <button type="submit">Save</button>
-    </form>
+    <main>
+      <h2><%= title %></h2>
 
+      <form method='POST' action=''>
+        <label>
+          Name:
+          <input
+            type="text"
+            required='true'
+            placeholder="Brand name"
+            name="name"
+            value="<%= locals.brand ? brand.name : '' %>"
+          >
+        </label>
+        <label>
+          Description:
+          <textarea
+            rows="3"
+            cols="50"
+            required='false'
+            placeholder="Brand description"
+            name="description"
+          ><%= locals.brand ? brand.description : '' %></textarea>
+        </label>
+        <label>
+          Address:
+          <input
+            type="text"
+            required='true'
+            placeholder="Brand address"
+            name="address"
+            value="<%= locals.brand ? brand.address : '' %>"
+          >
+        </label>
+        <button type="submit">Save</button>
+      </form>
+    </main>
+
+    <%- include('./partials/footer') %>
   </body>
 </html>

@@ -5,7 +5,38 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <%- include('./partials/header')%>
+
+    <main>
+      <h2>Featured Products</h2>
+      <a href='/product/list'>Browse All</a>
+      <div class='grid-parent'>
+        <% for (const product of featured_products) { %>
+          <div class='grid-child card'>
+            <h3>
+              <a href="<%= product.url %>"><%= product.name %></a>
+            </h3>
+            <p>&pound;<%= product.price %> | <%= product.weight %>lbs.</p>
+            <p><%= product.description %></p>
+          </div>
+          <% } %>
+        </div>
+        
+      <h2>Featured Brands</h2>
+      <a href='/brand/list'>Browse All</a>
+      <div class='grid-parent'>
+        <% for (const brand of featured_brands) { %>
+          <div class='grid-child card'>
+            <h3>
+              <a href="<%= brand.url %>"><%= brand.name %></a>
+            </h3>
+            <p><%= brand.description %></p>
+            <p><%= brand.address %></p>
+          </div>
+        <% } %>
+      </div>
+    </main>
+
+    <%- include('./partials/footer') %>
   </body>
 </html>

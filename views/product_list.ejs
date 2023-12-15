@@ -5,30 +5,33 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    
-    <h2>All Products</h2>
-    <div class='grid-parent'>
-      <% for (const product of all_products) { %>
-        <div class='grid-child card'>
-          <h3>
-            <a href="<%= product.url %>"><%= product.name %></a>
-          </h3>
+    <%- include('./partials/header') %>
 
-          <% if (product.available) { %>
-            <p><%= product.brand.name %></p>
-            <p>&pound;<%= product.price %> | <%= product.weight %>lbs.</p>
-            <p>In stock: <%= product.number_in_stock %></p>
-          <% } else { %>
-              <p>Currently out of stock</p>
-          <% } %>
-        </div>
+    <main>
+      <h2>All Products</h2>
+      <div class='grid-parent'>
+        <% for (const product of all_products) { %>
+          <div class='grid-child card'>
+            <h3>
+              <a href="<%= product.url %>"><%= product.name %></a>
+            </h3>
+      
+            <% if (product.available) { %>
+              <p><%= product.brand.name %></p>
+              <p>&pound;<%= product.price %> | <%= product.weight %>lbs.</p>
+              <p>In stock: <%= product.number_in_stock %></p>
+            <% } else { %>
+                <p>Currently out of stock</p>
+            <% } %>
+          </div>
         <% } %>
       </div>
       <hr />
       <p>
         <a href='/product/create'>Create Product</a>
-      </p>  
+      </p>
+    </main>
+
+    <%- include('./partials/footer') %>
   </body>
 </html>

@@ -5,28 +5,31 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <%- include('./partials/header')%>
 
-    <h2><%= brand.name %></h2>
-    <p><%= brand.description %></p>
-    <p><%= brand.address %></p>
-
-    <h2>Brand Products</h2>
-    <div class='grid-parent'>
-      <% for (const product of brand_products) { %>
-        <div class='grid-child card'>
-          <h3>
-            <a href="<%= product.url %>"><%= product.name %></a>
-          </h3>
-          <p><%= product.brand.name %></p>
-          <p>&pound;<%= product.price %> | <%= product.weight %>lbs.</p>
+    <main>
+      <h2><%= brand.name %></h2>
+      <p><%= brand.description %></p>
+      <p><%= brand.address %></p>
+  
+      <h2>Brand Products</h2>
+      <div class='grid-parent'>
+        <% for (const product of brand_products) { %>
+          <div class='grid-child card'>
+            <h3>
+              <a href="<%= product.url %>"><%= product.name %></a>
+            </h3>
+            <p><%= product.brand.name %></p>
+            <p>&pound;<%= product.price %> | <%= product.weight %>lbs.</p>
+          </div>
+          <% } %>
         </div>
-        <% } %>
-      </div>
-      <hr />
-      <p>
-        <a href='<%= brand.url %>/update'>Update</a> | <a href='<%= brand.url %>/delete'>Delete</a>
-      </p>
+        <hr />
+        <p>
+          <a href='<%= brand.url %>/update'>Update</a> | <a href='<%= brand.url %>/delete'>Delete</a>
+        </p>  
+    </main>
+
+    <%- include('./partials/footer') %>
   </body>
 </html>

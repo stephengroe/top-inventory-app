@@ -5,34 +5,39 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p><%= category.description %></p>
+    <%- include('./partials/header')%>
+
+    <main>
+      <h2><%= category.name %></h2>
+      <p><%= category.description %></p>
+      <div class='grid-parent'>
+        <% if (category_products.length > 0) { %>
+          <% for (const product of category_products) { %>
+            <div class='grid-child card'>
+              <h3>
+                <a href="<%= product.url %>"><%= product.name %></a>
+              </h3>
     
-    <h2><%= category.name %></h2>
-    <div class='grid-parent'>
-      <% if (category_products.length > 0) { %>
-        <% for (const product of category_products) { %>
-          <div class='grid-child card'>
-            <h3>
-              <a href="<%= product.url %>"><%= product.name %></a>
-            </h3>
-  
-            <% if (product.available) { %>
-              <p><%= product.brand.name %></p>
-              <p>&pound;<%= product.price %> | <%= product.weight %>lbs.</p>
-              <p>In stock: <%= product.number_in_stock %></p>
-            <% } else { %>
-                <p>Currently out of stock</p>
+              <% if (product.available) { %>
+                <p><%= product.brand.name %></p>
+                <p>&pound;<%= product.price %> | <%= product.weight %>lbs.</p>
+                <p>In stock: <%= product.number_in_stock %></p>
+              <% } else { %>
+                  <p>Currently out of stock</p>
+              <% } %>
+            </div>
             <% } %>
-          </div>
-          <% } %>
-      <% } else { %>
-        <p>We don't have any products in the <%= category.name %> category right now.</p>
-      <% } %>
-      </div>
-    <hr />
-    <p>
-      <a href='<%= category.url %>/update'>Update</a> | <a href='<%= category.url %>/delete'>Delete</a>
-    </p>
+        <% } else { %>
+          <p>We don't have any products in the <%= category.name %> category right now.</p>
+        <% } %>
+        </div>
+      <hr />
+      <p>
+        <a href='<%= category.url %>/update'>Update</a> | <a href='<%= category.url %>/delete'>Delete</a>
+      </p>
+  
+    </main>
+
+    <%- include('./partials/footer') %>
   </body>
 </html>
