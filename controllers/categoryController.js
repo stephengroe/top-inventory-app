@@ -45,7 +45,7 @@ exports.category_create_post = [
       description: req.body.description,
     });
 
-    if (errors.isEmpty) {
+    if (errors.isEmpty()) {
       await category.save();
       res.redirect(category.url);
     } else {
@@ -123,7 +123,7 @@ exports.category_update_post = [
       _id: req.params.id,
     });
     
-    if (errors.isEmpty) {
+    if (errors.isEmpty()) {
       const updatedCategory = await Category.findByIdAndUpdate(req.params.id, category);
       res.redirect(updatedCategory.url);
     } else {
