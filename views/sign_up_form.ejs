@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include('./partials/header')%>
+
+    <main>
+      <h2>Sign Up</h2>
+
+      <% if (locals.errors) { %>
+        <ul class="errors">
+          <% for (const error in errors) { %>
+            <li>error.msg</li>
+          <% } %>
+        </ul>
+      <% } %>
+  
+      <form method='POST' action=''>
+        <label>
+          Email:
+          <input
+            type="email"
+            required='true'
+            placeholder="Your email"
+            name="email"
+            value="<%= locals.user ? user.email : '' %>"
+          />
+        </label>
+        <label>
+          Username (optional):
+          <input
+            type="text"
+            required='false'
+            placeholder="Username"
+            name="username"
+            value="<%= locals.user ? user.username : '' %>"
+          />
+        </label>
+        <label>
+          Password:
+          <input
+            type="password"
+            required='true'
+            placeholder="Secure password"
+            name="password"
+            value=""
+          />
+        </label>
+        <label>
+          Confirm password:
+          <input
+            type="password"
+            required='true'
+            placeholder="Confirm password"
+            name="passwordConfirmation"
+            value=""
+          />
+        </label>
+        <button type="submit">Sign Up</button>
+      </form>
+
+      <hr />
+      <p>Already have an account? <a href='/user/log-in'>Log in</a></p>
+    </main>
+
+    <%- include('./partials/footer') %>
+  </body>
+</html>

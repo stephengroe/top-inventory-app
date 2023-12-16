@@ -1,15 +1,22 @@
+// Imports
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
+const dotenv = require('dotenv').config();
+
+// Import authentication
+const session = require('express-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const dotenv = require('dotenv').config();
 
 // Import subroutes
 const indexRouter = require('./routes/index');
 const productRoute = require('./routes/product');
 const brandRoute = require('./routes/brand');
 const categoryRoute = require('./routes/category');
+const userRoute = require('./routes/user');
 
 const app = express();
 
@@ -36,6 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/product', productRoute);
 app.use('/brand', brandRoute);
 app.use('/category', categoryRoute);
+app.use('/user', userRoute);
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
