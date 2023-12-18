@@ -18,3 +18,10 @@ Create, read, update, and delete the products, brands, and categories listed in 
 ### Inventory management
 
 Products include listed inventory count which changes how they're displayed—showing unavailble when inventory levels hit zero.
+
+### Login
+
+For admin privileges, use:
+
+* **Username**: admin
+* **Password**: allthepower

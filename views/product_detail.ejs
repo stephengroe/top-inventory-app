@@ -18,10 +18,12 @@
       <p>&pound;<%= product.price %> | <%= product.weight %>lbs. | <%= product.category.name %></p>
       <p>Total in stock: <%= product.number_in_stock %></p>
       <p><%= product.description %></p>
-      <hr />
-      <p>
-        <a href='<%= product.url %>/update'>Update</a> | <a href='<%= product.url %>/delete'>Delete</a>
-      </p>
+      <% if (locals.currentUser && locals.currentUser.admin) { %>
+        <hr />
+        <p>
+          <a href='<%= product.url %>/update'>Update</a> | <a href='<%= product.url %>/delete'>Delete</a>
+        </p>
+      <% } %>
     </main>
 
     <%- include('./partials/footer') %>

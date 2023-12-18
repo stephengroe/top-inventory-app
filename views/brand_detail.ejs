@@ -24,10 +24,12 @@
           </div>
           <% } %>
         </div>
-        <hr />
-        <p>
-          <a href='<%= brand.url %>/update'>Update</a> | <a href='<%= brand.url %>/delete'>Delete</a>
-        </p>  
+        <% if (locals.currentUser && locals.currentUser.admin) { %>
+          <hr />
+          <p>
+            <a href='<%= brand.url %>/update'>Update</a> | <a href='<%= brand.url %>/delete'>Delete</a>
+          </p>
+        <% } %>
     </main>
 
     <%- include('./partials/footer') %>
