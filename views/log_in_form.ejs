@@ -20,13 +20,13 @@
   
       <form method='POST' action=''>
         <label>
-          Email:
+          Username:
           <input
-            type="email"
+            type="text"
             required='true'
-            placeholder="Your email"
-            name="email"
-            value="<%= locals.user ? user.email : '' %>"
+            placeholder="Your username"
+            name="username"
+            value="<%= locals.user ? user.username : '' %>"
           />
         </label>
         <label>

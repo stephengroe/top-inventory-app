@@ -12,25 +12,15 @@
 
       <% if (locals.errors) { %>
         <ul class="errors">
-          <% for (const error in errors) { %>
-            <li>error.msg</li>
-          <% } %>
+          <% errors.forEach(error => { %>
+            <li><%= error.msg %></li>
+          <% }) %>
         </ul>
       <% } %>
   
       <form method='POST' action=''>
         <label>
-          Email:
-          <input
-            type="email"
-            required='true'
-            placeholder="Your email"
-            name="email"
-            value="<%= locals.user ? user.email : '' %>"
-          />
-        </label>
-        <label>
-          Username (optional):
+          Username:
           <input
             type="text"
             required='false'

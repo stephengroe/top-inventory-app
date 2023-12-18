@@ -1,15 +1,71 @@
 // Imports
+require('dotenv').config();
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
-const dotenv = require('dotenv').config();
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-// Import authentication
+const app = express();
+
+// Authentication
 const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+
+// Set up authentication
+const bcrypt = require('bcryptjs');
+const User = require('./models/user');
+
+// Passport middleware
+passport.use(
+  new LocalStrategy(async (username, password, done) => {
+    try {
+      const user = await User.findOne({ username: username });
+      
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username' });
+      };
+
+      const match = await bcrypt.compare(password, user.password);
+      if (!match) {
+        return done(null, false, { message: 'Incorrect password' });
+      };
+      return done(null, user);
+    } catch (err) {
+      return done(err);
+    };
+  })
+);
+
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await User.findById(id);
+    done(null, user);
+  } catch(err) {
+    done(err)
+  }
+});
+
+// Set up PassportJS
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.urlencoded({ extended: false }));
+
+// Add user object for access across session pages
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next();
+});
 
 // Import subroutes
 const indexRouter = require('./routes/index');
@@ -17,8 +73,6 @@ const productRoute = require('./routes/product');
 const brandRoute = require('./routes/brand');
 const categoryRoute = require('./routes/category');
 const userRoute = require('./routes/user');
-
-const app = express();
 
 // Set up Mongoose
 const mongoose = require('mongoose');
