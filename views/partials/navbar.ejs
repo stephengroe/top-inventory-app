@@ -3,11 +3,6 @@
     <li><a href="/category/list">All Categories</a></li>
     <li><a href="/product/list">All Products</a></li>
     <li><a href="/brand/list">All Brands</a></li>
-    <% if (locals.currentUser) { %>
-      <li>Welcome, <%= locals.currentUser.username %>! (<a href='/user/log-out'>log out</a>)</li>
-    <% } else { %>
-      <li><a href="/user/log-in">Log In</a></li>
-    <% } %>
     </li>
   </ul>
 </nav>

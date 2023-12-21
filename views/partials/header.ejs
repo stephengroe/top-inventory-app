@@ -1,7 +1,16 @@
 <header>
   <div class="logo">
-    <h1><a class="text-green-500" href='/'>The Joy of Tea</a></h1>
+    <h1><a href="">The Joy of Tea</a></h1>
     <p>The refined taste of sensibility.</p>
-</div>
+
+    <div class="floating-auth">
+      <% if (locals.currentUser) { %>
+        <p>Welcome, <%= locals.currentUser.username %>! (<a href='/user/log-out'>log out</a>)</p>
+      <% } else { %>
+        <p><a href="/user/log-in">Log In</a></p>
+      <% } %>
+    </div>
+  </div>
+  
   <%- include('./navbar') %>
 </header>
