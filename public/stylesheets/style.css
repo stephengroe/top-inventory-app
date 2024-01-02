@@ -1,18 +1,33 @@
+/* Variables */
+
+:root {
+  --site-bg-primary: #fff;
+  --site-bg-secondary: #E0E2DB;
+  --site-bg-tertiary: #D2D4C8;
+
+  --site-primary: #8B2635;
+  --site-secondary: #618B4A;
+  --site-tertiary: #2E3532;
+
+  --site-text-primary: #2E3532;
+}
+
 /* General styles */
 body {
   margin: 0;
   padding: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #fff3d0;
+  background-color: var(--site-bg-primary);
 }
 
 * {
   box-sizing: border-box;
   font-family: 'Crimson Text', serif;
+  color: var(--site-text-primary);
 }
 
 a {
-  color: #00B7FF;
+  color: var(--site-primary);
 }
 
 /* Header */
@@ -24,7 +39,7 @@ header {
 header a,
 header a:visited {
   text-decoration: none;
-  color: black;
+  color: var(--site-text-primary);
   transition: all 100ms;
 }
 
@@ -35,7 +50,7 @@ header .logo {
 }
 
 header .logo h1 a {
-  font-size: 1.75em;
+  font-size: 1.2em;
 }
 
 .floating-auth {
@@ -90,17 +105,20 @@ main h2 {
   border-radius: 1em;
   box-shadow: 1px 1px 3px rgba(0 0 0 / 0.1);
   padding: 2em;
-  background-color: #fff;
+  background-color: var(--site-bg-primary);
 }
 
 /* Footer */
 footer {
-  background-color: black;
-  color: white;
+  background-color: var(--site-tertiary);
   
   width: 100%;
   padding: 2em;
   text-align: center;
+}
+
+footer * {
+  color: var(--site-bg-secondary);
 }
 
 footer .footer-content {
@@ -116,5 +134,5 @@ footer .footer-content h2 {
 
 footer .copyright {
   font-size: 0.8em;
-  color: grey;
+  color: var(--site-bg-tertiary);
 }
