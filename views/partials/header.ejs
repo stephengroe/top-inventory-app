@@ -1,10 +1,12 @@
 <header>
-  <div class="promo-banner">Free 3-month transcontinental shipping on orders over &pound;1,000,000</div>
-  <div class="logo">
-    <h1><a href="">The Joy of Tea</a></h1>
-    <p>The refined taste of sensibility.</p>
+  <div class="promo-banner">Free transcontinental shipments for orders over &pound;1,000,000</div>
+  <div class="inner">
+    <div class="logo">
+      <h1><a href="/">The Joy of Tea</a></h1>
+      <p>The refined taste of sensibility.</p>
+    </div>
 
-    <div class="floating-auth">
+    <div class="auth">
       <% if (locals.currentUser) { %>
         <p>Welcome, <%= locals.currentUser.username %>! (<a href='/user/log-out'>log out</a>)</p>
       <% } else { %>
@@ -12,6 +14,7 @@
       <% } %>
     </div>
   </div>
-  
+
   <%- include('./navbar') %>
+  
 </header>
