@@ -9,7 +9,6 @@
 
     <main>
       <h2>Featured Products</h2>
-      <a href='/product/list'>Browse All</a>
       <div class='grid-parent'>
         <% for (const product of featured_products) { %>
           <div class='grid-child card'>
@@ -21,9 +20,9 @@
           </div>
           <% } %>
         </div>
+        <a class="button" href='/product/list'>Browse All</a>
         
       <h2>Featured Brands</h2>
-      <a href='/brand/list'>Browse All</a>
       <div class='grid-parent'>
         <% for (const brand of featured_brands) { %>
           <div class='grid-child card'>
@@ -35,6 +34,7 @@
           </div>
         <% } %>
       </div>
+      <a class="button" href='/brand/list'>Browse All</a>
     </main>
 
     <%- include('./partials/footer') %>

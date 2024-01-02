@@ -2,8 +2,8 @@
 
 :root {
   --site-bg-primary: #fff;
-  --site-bg-secondary: #E0E2DB;
-  --site-bg-tertiary: #D2D4C8;
+  --site-bg-secondary: #F5F3F5;
+  --site-bg-tertiary: #E0E2DB;
 
   --site-primary: #8B2635;
   --site-secondary: #618B4A;
@@ -26,7 +26,7 @@ body {
 }
 
 a {
-  color: var(--site-primary);
+  color: var(--site-secondary);
 }
 
 /* Header */
@@ -114,6 +114,7 @@ main h2 {
 
 /* Grid styles */
 .grid-parent {
+  /* background-color: var(--site-bg-secondary); */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1rem;
@@ -124,6 +125,29 @@ main h2 {
   box-shadow: 1px 1px 3px rgba(0 0 0 / 0.1);
   padding: 2em;
   background-color: var(--site-bg-primary);
+}
+
+/* Button styles */
+
+.button {
+  color: var(--site-bg-primary);
+  font-size: 1.2em;
+  text-decoration: none;
+  
+  display: block;
+  padding: 1ch 2ch;
+  background-color: var(--site-primary);
+  width: fit-content;
+  margin: 1em auto;
+
+  border-radius: .1em;
+  opacity: 100%;
+  transition: opacity 100ms;
+}
+
+.button:hover {
+  opacity: 90%;
+  transition: opacity 100ms;
 }
 
 /* Footer */
