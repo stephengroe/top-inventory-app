@@ -8,6 +8,7 @@
     <%- include('./partials/header')%>
 
     <main>
+      <section>
       <h2>All Brands</h2>
       <div class='grid-parent'>
         <% for (const brand of all_brands) { %>
@@ -22,6 +23,7 @@
         <p>
           <a class="button" href='/brand/create'>Create Brand</a>
         </p>    
+      </section>
     </main>
 
     <%- include('./partials/footer') %>

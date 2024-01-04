@@ -8,6 +8,7 @@
     <%- include('./partials/header')%>
 
     <main>
+      <section>
       <h2><%= category.name %></h2>
       <p><%= category.description %></p>
       <div class='grid-parent'>
@@ -37,7 +38,7 @@
             <a href='<%= category.url %>/update'>Update</a> | <a href='<%= category.url %>/delete'>Delete</a>
           </p>
         <% } %>
-  
+      </section>
     </main>
 
     <%- include('./partials/footer') %>

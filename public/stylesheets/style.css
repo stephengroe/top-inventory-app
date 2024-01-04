@@ -43,9 +43,21 @@ body {
 }
 
 main {
+  max-width: 1200px;
+  margin: auto;
+}
+
+main h2,
+main h3 {
+  text-align: center;
+}
+
+section {
   background-color: var(--site-bg-primary);
   box-shadow: var(--shadow-elevation-low);
   border-radius: var(--border-radius-small);
+  padding: 2ch;
+  margin: 1.5rem;
 }
 
 * {
@@ -65,7 +77,6 @@ h2 {
 /* Header */
 header {
   width: 100%;
-  margin-bottom: 4em;
   background-color: var(--site-bg-primary);
   box-shadow: var(--shadow-elevation-low);
 }
@@ -135,17 +146,6 @@ nav ul li {
 nav ul li a:hover {
   border-bottom: solid 2px var(--site-tertiary);
   transition: all 100ms;
-}
-
-/* Main content */
-main {
-  max-width: 1200px;
-  margin: 1rem auto;
-  padding: 2ch;
-}
-
-main h2 {
-  text-align: center;
 }
 
 /* Grid styles */

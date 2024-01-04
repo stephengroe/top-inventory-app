@@ -8,6 +8,7 @@
     <%- include('./partials/header') %>
 
     <main>
+      <section>
       <h2>All Products</h2>
       <div class='grid-parent'>
         <% for (const product of all_products) { %>
@@ -29,6 +30,7 @@
       <p>
         <a class="button" href='/product/create'>Create Product</a>
       </p>
+    </section>
     </main>
 
     <%- include('./partials/footer') %>

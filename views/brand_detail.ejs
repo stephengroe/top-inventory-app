@@ -8,6 +8,7 @@
     <%- include('./partials/header')%>
 
     <main>
+      <section>
       <h2><%= brand.name %></h2>
       <p><%= brand.description %></p>
       <p><%= brand.address %></p>
@@ -30,6 +31,7 @@
             <a href='<%= brand.url %>/update'>Update</a> | <a href='<%= brand.url %>/delete'>Delete</a>
           </p>
         <% } %>
+      </section>
     </main>
 
     <%- include('./partials/footer') %>

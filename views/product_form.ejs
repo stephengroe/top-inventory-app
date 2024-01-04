@@ -8,6 +8,7 @@
     <%- include('./partials/header')%>
 
     <main>
+      <section>
       <h2><%= title %></h2>
 
       <% if (locals.errors) { %>
@@ -110,6 +111,7 @@
         </label>
         <button class="button" type="submit">Save</button>
       </form>  
+    </section>
     </main>
 
     <%- include('./partials/footer') %>
