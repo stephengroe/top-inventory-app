@@ -23,13 +23,13 @@
         </label>
         <label>
           Description:
-          <input
-            type="text"
+          <textarea
+            rows="5"
+            cols="50"
             required='false'
             placeholder="Category description"
             name="description"
-            value="<%= locals.category ? category.description : '' %>"
-          >
+          ><%= locals.category ? category.description : '' %></textarea>
         </label>
         <button class="button" type="submit">Save</button>
       </form>
