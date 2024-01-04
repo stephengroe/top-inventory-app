@@ -36,6 +36,12 @@
 }
 
 /* General styles */
+* {
+  box-sizing: border-box;
+  font-family: 'Crimson Text', serif;
+  color: var(--site-text-primary);
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -58,12 +64,6 @@ section {
   border-radius: var(--border-radius-small);
   padding: 2ch;
   margin: 1.5rem;
-}
-
-* {
-  box-sizing: border-box;
-  font-family: 'Crimson Text', serif;
-  color: var(--site-text-primary);
 }
 
 a {
@@ -162,8 +162,27 @@ nav ul li a:hover {
   background-color: var(--site-bg-primary);
 }
 
-/* Button styles */
+/* Forms */
+form {
+  display: flex;
+  flex-flow: column;
+  max-width: 400px;
+  margin: auto;
+  gap: 1rem;
+  align-items: stretch;
+  font-size: 1.2rem;
+}
 
+input,
+textarea,
+select {
+  font-size: 1em;
+  width: 100%;
+  display: block;
+}
+
+/* Button styles */
+button,
 .button {
   color: var(--site-bg-primary);
   font-size: 1.2em;
